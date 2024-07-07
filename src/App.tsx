@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Header from './pages/header/header';
+import Main from './pages/main/main';
 
-function App() {
-  const [count, setCount] = useState(0)
+import './App.css';
+interface card {
+  id: number;
+  raiting: number;
+  category: string;
+  imgClass: string;
+  title: string;
+  text: string;
+  price: number;
+}
+type StateArrCard = {
+  arrCard: card[] | null;
+};
+class App extends React.Component<StateArrCard> {
+  state = { arrCard: [] };
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  getArrFromApi = (searchParam: string) => {
+    const searchBy = searchParam ? `?search=${searchParam}` : '';
+    const url = `https://66716cbfe083e62ee43b8e10.mockapi.io/books${searchBy}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({ arrCard: result });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  render(): React.ReactNode {
+    return (
+      <>
+        <Header func={this.getArrFromApi} />
+        <Main arr={this.state.arrCard} />
+      </>
+    );
+  }
 }
 
-export default App
+export default App;
