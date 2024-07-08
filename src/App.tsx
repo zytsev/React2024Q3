@@ -1,21 +1,14 @@
 import React from 'react';
 import Header from './pages/header/header';
 import Main from './pages/main/main';
-
+import { card } from './assets/types/types';
 import './App.css';
-interface card {
-  id: number;
-  raiting: number;
-  category: string;
-  imgClass: string;
-  title: string;
-  text: string;
-  price: number;
-}
+interface PropsApp {};
 type StateArrCard = {
   arrCard: card[] | null;
 };
-class App extends React.Component<StateArrCard> {
+
+class App extends React.Component<PropsApp, StateArrCard> {
   state = { arrCard: [] };
 
   getArrFromApi = (searchParam: string) => {
