@@ -1,29 +1,15 @@
 import style from './main.module.css';
-import React from 'react';
-import Card from '../../components/card/card';
+import Card from '../../components/Card/Card';
+import { MainProps } from '../../assets/types/types';
 
-interface item {
-  id: number;
-  raiting: number;
-  category: string;
-  imgClass: string;
-  title: string;
-  text: string;
-  price: number;
-}
-interface PropsMain {
-  arr: item[];
-}
+const Main = (props: MainProps) => {
+  const arrFromApi = props.arr;
 
-class Main extends React.Component<PropsMain> {
-  render(): React.ReactNode {
-    const arrFromApi = this.props.arr;
-    return (
-      <div className={style.main_wrapper}>
-        {arrFromApi && arrFromApi.map((item, i) => <Card key={i} {...item} />)}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={style.main_wrapper}>
+      {arrFromApi && arrFromApi.map((item) => <Card key={item.id} {...item} />)}
+    </div>
+  );
+};
 
 export default Main;
