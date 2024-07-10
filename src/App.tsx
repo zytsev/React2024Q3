@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './pages/Header/Header';
 import Main from './pages/Main/Main';
 import { card } from './assets/types/types';
@@ -8,10 +8,8 @@ const App = () => {
   const [arrFromApi, setArrFromApi] = React.useState<card[] | null>(null);
   const [searchParam, setSearchParam] = React.useState<string>('');
 
-  const getSearchParam: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    setSearchParam(event.target.value);
+  const getSearchParam = (value: string) => {
+    setSearchParam(value);
   };
 
   const getArrFromApi = (searchParam: string) => {
@@ -29,13 +27,13 @@ const App = () => {
       );
   };
 
+  useEffect(() => {
+    getArrFromApi(searchParam);
+  }, [searchParam]);
+
   return (
     <>
-      <Header
-        onClick={() => getArrFromApi(searchParam)}
-        onChange={getSearchParam}
-        searchParam={searchParam}
-      />
+      <Header onClick={getSearchParam} searchParam={searchParam} />
       <Main arr={arrFromApi} />
     </>
   );

@@ -12,8 +12,7 @@ export interface BtnProps {
   onClick?: () => void;
 }
 export interface HeaderProps {
-  onClick: () => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick: (value: string) => void;
   searchParam: string | undefined;
 }
 export interface SearchProps extends HeaderProps {}
