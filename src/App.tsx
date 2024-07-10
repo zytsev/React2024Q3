@@ -12,7 +12,7 @@ const App = () => {
     setSearchParam(value);
   };
 
-  const getArrFromApi = (searchParam: string) => {
+  const getArrFromApi = async (searchParam: string) => {
     const searchBy = searchParam ? `?search=${searchParam}` : '';
     const url = `https://66716cbfe083e62ee43b8e10.mockapi.io/books${searchBy}`;
     fetch(url)
