@@ -18,4 +18,13 @@ export interface HeaderProps {
 export interface SearchProps extends HeaderProps {}
 export interface MainProps {
   arr: card[] | null;
+  cardsOnPagina: number;
+  activePagina: number;
+}
+export interface PropsPagination {
+  arrFromApi: card[] | null;
+  setCardsOnPagina: (i: number) => void;
+  cardsOnPagina: number;
+  activePagina: number;
+  setActivePagina: (item: number) => void;
 }
