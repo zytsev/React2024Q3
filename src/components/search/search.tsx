@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import style from './search.module.css';
 import { SearchProps } from '../../assets/types/types';
 import Btn from '../Btn/Btn';
+import { Link } from 'react-router-dom';
 
 const Search = (props: SearchProps) => {
   const searchFromLS = localStorage.getItem('React2024Q3');
@@ -25,7 +26,9 @@ const Search = (props: SearchProps) => {
           className="style.search_input"
         />
       </label>
-      <Btn onClick={() => props.onClick(search)} text="Search" />
+      <Link to={'main'}>
+        <Btn onClick={() => props.onClick(search)} text="Search" />
+      </Link>
     </div>
   );
 };
