@@ -6,15 +6,18 @@ import { card } from './assets/types/types';
 import NotFound from './pages/NotFound/NotFound';
 import { DetailedCard } from './components/DetailedCard/DetailedcCard';
 import getApi from './services/getApi/getApi';
-import { ContextProvider } from './components/Context/Context';
+import { useContext } from 'react';
+import { Context } from './components/Context/Context';
 import './App.css';
 
 const App = () => {
+  const context = useContext(Context);
   const [arrFromApi, setArrFromApi] = React.useState<card[] | null>(null);
   const [searchParam, setSearchParam] = React.useState<string>('');
 
   const getSearchParam = (value: string) => {
     setSearchParam(value);
+    context?.setActivePagina(1);
   };
 
   const getArrFromApi = async (searchParam: string) => {
@@ -26,21 +29,17 @@ const App = () => {
   }, [searchParam]);
 
   return (
-    <ContextProvider>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Header onClick={getSearchParam} searchParam={searchParam} />
-          }
-        >
-          <Route path="main" element={<Main arrFromApi={arrFromApi} />}>
-            <Route path="card/:id" element={<DetailedCard />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
+    <Routes>
+      <Route
+        path="/"
+        element={<Header onClick={getSearchParam} searchParam={searchParam} />}
+      >
+        <Route path="main" element={<Main arrFromApi={arrFromApi} />}>
+          <Route path="card/:id" element={<DetailedCard />} />
         </Route>
-      </Routes>
-    </ContextProvider>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 };
 

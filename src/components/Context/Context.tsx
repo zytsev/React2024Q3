@@ -5,12 +5,15 @@ import { card } from '../../assets/types/types';
 interface context {
   checkedProduct: card | null;
   getProd: (id: number) => void;
+  activePagina: number;
+  setActivePagina: (pagina: number) => void;
 }
 type Props = { children: ReactNode };
 export const Context = createContext<context | null>(null);
 
 export const ContextProvider = ({ children }: Props) => {
   const [checkedProduct, setCeckedProduct] = useState<card | null>(null);
+  const [activePagina, setActivePagina] = useState(1);
 
   const getProd = async (id: number) => {
     const arr: card[] | null = await getApi(null);
@@ -19,7 +22,7 @@ export const ContextProvider = ({ children }: Props) => {
     });
   };
 
-  const value = { checkedProduct, getProd };
+  const value = { checkedProduct, getProd, activePagina, setActivePagina };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

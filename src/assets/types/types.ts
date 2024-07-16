@@ -25,8 +25,6 @@ export interface PropsPagination {
   arrFromApi: card[] | null;
   setCardsOnPagina: (i: number) => void;
   cardsOnPagina: number;
-  activePagina: number;
-  setActivePagina: (item: number) => void;
 }
 export interface PropsDetailedCard {
   paramCard: card;

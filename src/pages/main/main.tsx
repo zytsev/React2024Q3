@@ -3,12 +3,15 @@ import Card from '../../components/Card/Card';
 import { MainProps } from '../../assets/types/types';
 import { Pagination } from '../../components/Pagination/Paginatin';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { Context } from '../../components/Context/Context';
 
 import { Outlet } from 'react-router-dom';
 
 const Main = (props: MainProps) => {
+  const context = useContext(Context);
   const [cardsOnPagina, setCardsOnPagina] = useState(3);
-  const [activePagina, setActivePagina] = useState(1);
+  const activePagina = context?.activePagina || 1;
 
   let arrFromApi = props.arrFromApi;
   const maxcards = cardsOnPagina * activePagina;
@@ -33,8 +36,6 @@ const Main = (props: MainProps) => {
         arrFromApi={props.arrFromApi}
         setCardsOnPagina={setCardsOnPagina}
         cardsOnPagina={cardsOnPagina}
-        activePagina={activePagina}
-        setActivePagina={setActivePagina}
       />
     </div>
   );

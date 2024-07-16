@@ -1,14 +1,13 @@
 import style from './pagination.module.css';
 import { PropsPagination } from '../../assets/types/types';
+import { useContext } from 'react';
+import { Context } from '../Context/Context';
 
 export const Pagination = (props: PropsPagination) => {
-  const {
-    arrFromApi,
-    setCardsOnPagina,
-    cardsOnPagina,
-    activePagina,
-    setActivePagina,
-  } = props;
+  const context = useContext(Context);
+  const { arrFromApi, setCardsOnPagina, cardsOnPagina } = props;
+  const activePagina = context?.activePagina || 1;
+
   let numberOfPaginas;
   arrFromApi
     ? (numberOfPaginas = Math.ceil(arrFromApi.length / cardsOnPagina))
@@ -20,8 +19,8 @@ export const Pagination = (props: PropsPagination) => {
       <svg
         onClick={
           activePagina !== 1
-            ? () => setActivePagina(activePagina - 1)
-            : () => setActivePagina(activePagina)
+            ? () => context?.setActivePagina(activePagina - 1)
+            : () => context?.setActivePagina(activePagina)
         }
         xmlns="http://www.w3.org/2000/svg"
         className={style.PGNsvg}
@@ -40,7 +39,7 @@ export const Pagination = (props: PropsPagination) => {
         {arrPaginas.map((item) => (
           <li
             key={item}
-            onClick={() => setActivePagina(item)}
+            onClick={() => context?.setActivePagina(item)}
             className={activePagina === item ? style.PGNliActive : style.PGNli}
           >
             {item}
@@ -50,8 +49,8 @@ export const Pagination = (props: PropsPagination) => {
       <svg
         onClick={
           activePagina !== arrPaginas.length
-            ? () => setActivePagina(activePagina + 1)
-            : () => setActivePagina(activePagina)
+            ? () => context?.setActivePagina(activePagina + 1)
+            : () => context?.setActivePagina(activePagina)
         }
         xmlns="http://www.w3.org/2000/svg"
         className={style.PGNsvg}
