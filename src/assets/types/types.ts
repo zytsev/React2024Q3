@@ -13,7 +13,7 @@ export interface BtnProps {
 }
 export interface HeaderProps {
   onClick: (value: string) => void;
-  searchParam: string | undefined;
+  // searchParam: string | undefined;
 }
 export interface SearchProps extends HeaderProps {}
 export interface MainProps {

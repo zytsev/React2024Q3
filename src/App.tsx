@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './pages/Header/Header';
 import Main from './pages/Main/Main';
@@ -6,7 +6,6 @@ import { card } from './assets/types/types';
 import NotFound from './pages/NotFound/NotFound';
 import { DetailedCard } from './components/DetailedCard/DetailedcCard';
 import getApi from './services/getApi/getApi';
-import { useContext } from 'react';
 import { Context } from './components/Context/Context';
 import './App.css';
 
@@ -30,11 +29,8 @@ const App = () => {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<Header onClick={getSearchParam} searchParam={searchParam} />}
-      >
-        <Route path="main" element={<Main arrFromApi={arrFromApi} />}>
+      <Route path="/" element={<Header onClick={getSearchParam} />}>
+        <Route path="main/" element={<Main arrFromApi={arrFromApi} />}>
           <Route path="card/:id" element={<DetailedCard />} />
         </Route>
         <Route path="*" element={<NotFound />} />
