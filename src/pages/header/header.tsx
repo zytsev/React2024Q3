@@ -5,12 +5,6 @@ import { HeaderProps } from '../../assets/types/types';
 import { Link, Outlet } from 'react-router-dom';
 
 const Header = (props: HeaderProps) => {
-  // const navigate = useNavigate();
-  // const goFirstPage = () => navigate(`main/1`);
-
-  // useEffect(() => {
-  //   goFirstPage();
-  // });
   return (
     <>
       <div className={style.header_wrapper}>

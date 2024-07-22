@@ -11,7 +11,7 @@ export const Pagination = (props: PropsPagination) => {
   let numberOfPaginas;
   arrFromApi
     ? (numberOfPaginas = Math.ceil(arrFromApi.length / cardsOnPagina))
-    : 1;
+    : (numberOfPaginas = 1);
   const arrPaginas = [...Array(numberOfPaginas).keys()].map((i) => i + 1);
 
   return (
@@ -41,6 +41,7 @@ export const Pagination = (props: PropsPagination) => {
             key={item}
             onClick={() => context?.setActivePagina(item)}
             className={activePagina === item ? style.PGNliActive : style.PGNli}
+            data-testid={item}
           >
             {item}
           </li>

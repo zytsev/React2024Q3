@@ -35,7 +35,11 @@ const Search = (props: SearchProps) => {
         />
       </label>
       <Link to={`/main?search=${searchParams.get('search')}`}>
-        <Btn onClick={() => sendSearchParam(search)} text="Search" />
+        <Btn
+          onClick={() => sendSearchParam(search)}
+          text="Search"
+          data-testid="Search"
+        />
       </Link>
     </div>
   );

@@ -1,10 +1,14 @@
-// import Btn from './Btn';
-// import { render, screen } from '@testing-library/react';
+import Btn from './Btn';
+import { render, screen } from '@testing-library/react';
 
-// describe('Btn component', () => {
-//   test('Btn renders', () => {
-//     render(<Btn text="Search">Search</Btn>);
+import '@testing-library/jest-dom';
 
-//     expect(screen.getAllByRole('list')).toBeIn;
-//   });
-// });
+describe('Btn component', () => {
+  //const searchBtn = screen.getByText('Search');
+
+  it('Btn renders', () => {
+    render(<Btn text="Search"></Btn>);
+
+    expect(screen.getByText('Search')).toBeInTheDocument();
+  });
+});

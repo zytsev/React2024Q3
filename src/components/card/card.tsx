@@ -11,6 +11,7 @@ const Card = (paramFromApi: card) => {
       <div
         onClick={() => context?.getProd(paramFromApi.id)}
         className="list_container"
+        data-testid="card"
       >
         <div className={paramFromApi.imgClass}></div>
         <h3 className={style.list_title}>{paramFromApi.title}</h3>
