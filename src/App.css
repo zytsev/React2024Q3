@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.list_container > div {
+.list_container > div:first-child {
   background-size: cover;
   width: 100%;
   height: 340px;

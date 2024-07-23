@@ -26,3 +26,12 @@
   margin-top: 0;
   margin-bottom: 20px;
 }
+
+.list_wrap {
+  display: flex;
+  gap: 5rem;
+}
+
+.card_checkbox {
+  cursor: pointer;
+}

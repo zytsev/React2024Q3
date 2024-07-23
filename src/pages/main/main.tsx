@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { Context } from '../../components/Context/Context';
 
 import { Outlet } from 'react-router-dom';
+import PopUp from '../../components/PopUp/popUp';
 
 const Main = (props: MainProps) => {
   const context = useContext(Context);
@@ -37,6 +38,7 @@ const Main = (props: MainProps) => {
         setCardsOnPagina={setCardsOnPagina}
         cardsOnPagina={cardsOnPagina}
       />
+      <PopUp />
     </div>
   );
 };

@@ -16,7 +16,13 @@ const Card = (paramFromApi: card) => {
         <div className={paramFromApi.imgClass}></div>
         <h3 className={style.list_title}>{paramFromApi.title}</h3>
         <p className={style.list_text}>{paramFromApi.text}</p>
-        <p className={style.list_price}>${paramFromApi.price}</p>
+        <div className={style.list_wrap}>
+          <p className={style.list_price}>${paramFromApi.price}</p>
+          <label className={style.card_checkbox}>
+            Add
+            <input type="checkbox" checked={true} onChange={() => {}} />
+          </label>
+        </div>
       </div>
     </Link>
   );

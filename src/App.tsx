@@ -8,11 +8,13 @@ import { DetailedCard } from './components/DetailedCard/DetailedcCard';
 import getApi from './services/getApi/getApi';
 import { Context } from './components/Context/Context';
 import './App.css';
+//import { useAppSelector } from './store/store';
 
 const App = () => {
   const context = useContext(Context);
   const [arrFromApi, setArrFromApi] = React.useState<card[] | null>(null);
   const [searchParam, setSearchParam] = React.useState<string>('');
+  //const coffee = useAppSelector((state) => state.coffee);
 
   const getSearchParam = (value: string) => {
     setSearchParam(value);
