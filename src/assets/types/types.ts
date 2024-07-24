@@ -11,18 +11,18 @@ export interface BtnProps {
   text: string;
   onClick?: () => void;
 }
-export interface HeaderProps {
-  onClick: (value: string) => void;
-  // searchParam: string | undefined;
-}
-export interface SearchProps extends HeaderProps {}
-export interface MainProps {
-  arrFromApi: card[] | null;
-  // cardsOnPagina: number;
-  // activePagina: number;
-}
+// export interface HeaderProps {
+//   onClick: (value: string) => void;
+//   // searchParam: string | undefined;
+// }
+//export interface SearchProps extends HeaderProps {}
+// export interface MainProps {
+//   arrFromApi: card[] | null;
+//   // cardsOnPagina: number;
+//   // activePagina: number;
+// }
 export interface PropsPagination {
-  arrFromApi: card[] | null;
+  arrFromApi: card[] | null | undefined;
   setCardsOnPagina: (i: number) => void;
   cardsOnPagina: number;
 }

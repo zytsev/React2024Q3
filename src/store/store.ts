@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import coffeeReducer from '../slice/coffeeSlice';
+import searchReducer from '../slice/searchParamSlice';
 import checkCardReducer from '../slice/checkCardSlice';
+import { coffeeApi } from '../services/coffeeApi/coffeeApi';
 
 export const store = configureStore({
   reducer: {
-    coffee: coffeeReducer,
+    searchParam: searchReducer,
     checkCard: checkCardReducer,
+    [coffeeApi.reducerPath]: coffeeApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(coffeeApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,8 +1,8 @@
 import style from './card.module.css';
 import { card } from '../../assets/types/types';
+import { Link } from 'react-router-dom';
 import { Context } from '../../components/Context/Context';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { setIdCheckedCard } from '../../slice/checkCardSlice';
 import { useAppSelector, useAppDispatch } from '../../store/store';
 
