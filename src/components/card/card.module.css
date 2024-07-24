@@ -29,9 +29,6 @@
 
 .list_wrap {
   display: flex;
-  gap: 5rem;
-}
-
-.card_checkbox {
-  cursor: pointer;
+  gap: 4rem;
+  cursor: default;
 }

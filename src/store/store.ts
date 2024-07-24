@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import coffeeReducer from '../slice/coffeeSlice';
-// ...
+import checkCardReducer from '../slice/checkCardSlice';
 
 export const store = configureStore({
   reducer: {
     coffee: coffeeReducer,
+    checkCard: checkCardReducer,
   },
 });
 

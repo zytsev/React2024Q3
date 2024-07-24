@@ -2,10 +2,9 @@ import style from './main.module.css';
 import Card from '../../components/Card/Card';
 import { MainProps } from '../../assets/types/types';
 import { Pagination } from '../../components/Pagination/Paginatin';
-import { useState } from 'react';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Context } from '../../components/Context/Context';
-
+import { useAppSelector } from '../../store/store';
 import { Outlet } from 'react-router-dom';
 import PopUp from '../../components/PopUp/popUp';
 
@@ -13,6 +12,9 @@ const Main = (props: MainProps) => {
   const context = useContext(Context);
   const [cardsOnPagina, setCardsOnPagina] = useState(3);
   const activePagina = context?.activePagina || 1;
+  const idCheckedCard = useAppSelector(
+    (state) => state.checkCard.idCheckedCard
+  );
 
   let arrFromApi = props.arrFromApi;
   const maxcards = cardsOnPagina * activePagina;
@@ -38,7 +40,7 @@ const Main = (props: MainProps) => {
         setCardsOnPagina={setCardsOnPagina}
         cardsOnPagina={cardsOnPagina}
       />
-      <PopUp />
+      {idCheckedCard.length > 0 && <PopUp />}
     </div>
   );
 };
