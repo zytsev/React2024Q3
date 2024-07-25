@@ -46,7 +46,7 @@ const Main = () => {
         setCardsOnPagina={setCardsOnPagina}
         cardsOnPagina={cardsOnPagina}
       />
-      {idCheckedCard.length > 0 && <PopUp />}
+      {idCheckedCard.length > 0 && <PopUp allProd={data} />}
     </div>
   );
 };

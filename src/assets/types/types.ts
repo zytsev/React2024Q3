@@ -7,6 +7,13 @@ export interface card {
   text: string;
   price: number;
 }
+export interface cardToCSV {
+  category: string;
+  raiting: number;
+  title: string;
+  text: string;
+  price: number;
+}
 export interface BtnProps {
   text: string;
   onClick?: () => void;

@@ -3,18 +3,24 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { vi } from 'vitest';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 describe('card component', () => {
   vi.mock('./Card', () => ({
     CardComponent: vi.fn(() => <div data-testid="card"></div>),
   }));
-
-  const fn = vi.fn();
+  const initialState = { output: 10 };
+  const mockStore = configureStore();
+  let store;
 
   it('Cards and DetailedCard renders', () => {
+    store = mockStore(initialState);
     render(
       <BrowserRouter>
-        <Header onClick={fn}></Header>
+        <Provider store={store}>
+          <Header></Header>
+        </Provider>
       </BrowserRouter>
     );
     fireEvent.click(screen.getByText('Search'));

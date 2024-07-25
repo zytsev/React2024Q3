@@ -1,15 +1,21 @@
 import Header from './Header';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Header component', () => {
-  const fn = vi.fn();
+  const initialState = { output: 10 };
+  const mockStore = configureStore();
+  let store;
   it('Header renders', () => {
+    store = mockStore(initialState);
     render(
       <BrowserRouter>
-        <Header onClick={fn}></Header>
+        <Provider store={store}>
+          <Header></Header>
+        </Provider>
       </BrowserRouter>
     );
 
