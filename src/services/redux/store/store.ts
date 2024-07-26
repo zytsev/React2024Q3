@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import searchReducer from '../slice/searchParamSlice';
 import checkCardReducer from '../slice/checkCardSlice';
-import { coffeeApi } from '../services/coffeeApi/coffeeApi';
+import { coffeeApi } from '../coffeeApi/coffeeApi';
 
 export const store = configureStore({
   reducer: {

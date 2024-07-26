@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface State {
+export interface StateSearchParam {
   searchParam: string;
 }
 
-const initialState: State = {
+const initialState: StateSearchParam = {
   searchParam: '',
 };
 

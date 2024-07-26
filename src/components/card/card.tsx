@@ -3,18 +3,19 @@ import { card } from '../../assets/types/types';
 import { Link } from 'react-router-dom';
 import { Context } from '../../components/Context/Context';
 import { useContext } from 'react';
-import { setIdCheckedCard } from '../../slice/checkCardSlice';
-import { useAppSelector, useAppDispatch } from '../../store/store';
+import { setCheckedCards } from '../../services/redux/slice/checkCardSlice';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '../../services/redux/store/store';
 
 const Card = (paramFromApi: card) => {
   const context = useContext(Context);
   const dispatch = useAppDispatch();
-  const idCheckedCard = useAppSelector(
-    (state) => state.checkCard.idCheckedCard
-  );
+  const checkedCards = useAppSelector((state) => state.checkCard.checkedCards);
 
-  const togleCheckbox = (id: number) => {
-    dispatch(setIdCheckedCard({ id }));
+  const togleCheckbox = (prod: card) => {
+    dispatch(setCheckedCards(prod));
   };
 
   return (
@@ -34,8 +35,8 @@ const Card = (paramFromApi: card) => {
           Select
           <input
             type="checkbox"
-            checked={idCheckedCard.includes(paramFromApi.id)}
-            onChange={() => togleCheckbox(paramFromApi.id)}
+            checked={checkedCards.map((e) => e.id).includes(paramFromApi.id)}
+            onChange={() => togleCheckbox(paramFromApi)}
           />
         </label>
       </div>

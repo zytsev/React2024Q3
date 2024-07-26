@@ -6,7 +6,7 @@ export const DetailedCard = () => {
   const context = useContext(Context);
 
   return (
-    <section className="modale">
+    <section className={`modale ${context?.isDark && 'backgr-dark'}`}>
       <div className="left-container">
         <img id="modal-img" className={context?.checkedProduct?.imgClass} />
         <div className="alert-wrapper">

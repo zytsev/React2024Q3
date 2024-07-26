@@ -3,8 +3,8 @@ import style from './search.module.css';
 //import { SearchProps } from '../../assets/types/types';
 import Btn from '../Btn/Btn';
 import { Link, useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from '../../store/store';
-import { setSearchParam } from '../../slice/searchParamSlice';
+import { useAppDispatch } from '../../services/redux/store/store';
+import { setSearchParam } from '../../services/redux/slice/searchParamSlice';
 import { Context } from '../Context/Context';
 
 const Search = () => {
