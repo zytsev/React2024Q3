@@ -192,7 +192,7 @@
   width: 100%;
 }
 
-.alert-wrapper>img {
+.alert-wrapper > img {
   align-self: flex-start;
   margin: 13px 8px 0 0;
 }
@@ -226,10 +226,10 @@
   color: #403f3d;
 }
 
-.modale-colum>h3,
-.modale-colum>P,
+.modale-colum > h3,
+.modale-colum > P,
 .modal-text,
-.price-wrapper>p {
+.price-wrapper > p {
   margin: 0;
 }
 
@@ -281,7 +281,6 @@
 .backgr-dark,
 .switch-item:hover {
   background-color: #665f55;
-
 }
 
 .backgr-dark h3,
