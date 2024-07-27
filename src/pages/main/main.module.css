@@ -1,0 +1,7 @@
+.main_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 39px;
+  padding: 1rem;
+}
