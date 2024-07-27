@@ -1,0 +1,10 @@
+.search_wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.search_input {
+  border-radius: 8px;
+}
