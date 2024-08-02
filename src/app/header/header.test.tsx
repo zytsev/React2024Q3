@@ -1,4 +1,4 @@
-import Header from './Header';
+import Header from './page';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';

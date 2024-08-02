@@ -1,4 +1,4 @@
-import { DetailedCard } from './DetailedcCard';
+import DetailedCard from './page';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import * as Hooks from 'react';
 import { BrowserRouter } from 'react-router-dom';

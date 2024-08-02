@@ -1,5 +1,5 @@
-import Header from '../../pages/Header/Header';
-import * as reduxHooks from '../../services/redux/store/store';
+import Header from '../../app/header/page';
+import * as reduxHooks from '../../redux/store';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { vi, vitest } from 'vitest';
 import '@testing-library/jest-dom';

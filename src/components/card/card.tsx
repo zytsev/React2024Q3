@@ -1,13 +1,11 @@
 import style from './card.module.css';
 import { card } from '../../assets/types/types';
-import { Link } from 'react-router-dom';
+
 import { Context } from '../../components/Context/Context';
 import { useContext } from 'react';
-import { setCheckedCards } from '../../services/redux/slice/checkCardSlice';
-import {
-  useAppSelector,
-  useAppDispatch,
-} from '../../services/redux/store/store';
+import { setCheckedCards } from '../../redux/slice/checkCardSlice';
+import { useAppSelector, useAppDispatch } from '../../redux/store';
+import Link from 'next/link';
 
 const Card = (paramFromApi: card) => {
   const context = useContext(Context);
@@ -24,7 +22,7 @@ const Card = (paramFromApi: card) => {
       className="list_container"
       data-testid="card"
     >
-      <Link to={`card/${paramFromApi.id}`} style={{ color: '#213547' }}>
+      <Link href={`/main/card/${paramFromApi.id}`} style={{ color: '#213547' }}>
         <div className={`${paramFromApi.imgClass} img_card`}></div>
         <h3 className={style.list_title}>{paramFromApi.title}</h3>
         <p className={style.list_text}>{paramFromApi.text}</p>

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import NotFound from './NotFound';
+import NotFound from '../../../pages/NotFound/NotFound';
 
 import { vitest } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';

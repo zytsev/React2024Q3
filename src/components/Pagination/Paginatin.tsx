@@ -5,8 +5,9 @@ import { Context } from '../Context/Context';
 
 export const Pagination = (props: PropsPagination) => {
   const context = useContext(Context);
-  const { arrFromApi, setCardsOnPagina, cardsOnPagina } = props;
+  const { arrFromApi } = props;
   const activePagina = context?.activePagina || 1;
+  const cardsOnPagina = context?.cardsOnPagina || 3;
 
   let numberOfPaginas;
   arrFromApi
@@ -70,8 +71,11 @@ export const Pagination = (props: PropsPagination) => {
         {' '}
         Show on page:
         <select
-          value={props.cardsOnPagina}
-          onChange={(e) => setCardsOnPagina(Number(e.target.value))}
+          value={cardsOnPagina}
+          onChange={(e) => {
+            context?.setCardsOnPagina(Number(e.target.value));
+            context?.setActivePagina(1);
+          }}
         >
           <option>3</option>
           <option>6</option>

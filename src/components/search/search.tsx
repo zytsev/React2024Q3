@@ -1,31 +1,39 @@
+'use client';
+
 import React, { useContext, useEffect } from 'react';
 import style from './search.module.css';
 //import { SearchProps } from '../../assets/types/types';
 import Btn from '../Btn/Btn';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from '../../services/redux/store/store';
-import { setSearchParam } from '../../services/redux/slice/searchParamSlice';
+//import { Link, useSearchParams } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/store';
+import { setSearchParam } from '../../redux/slice/searchParamSlice';
 import { Context } from '../Context/Context';
+import Link from 'next/link';
 
 const Search = () => {
-  const searchFromLS = localStorage.getItem('React2024Q3');
-  const [search, setSearch] = React.useState(searchFromLS ? searchFromLS : '');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = React.useState('');
+  //const [searchParams, setSearchParams] = useSearchParams();
   const context = useContext(Context);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    const searchFromLS = window.localStorage.getItem('React2024Q3');
+    setSearch(searchFromLS ? searchFromLS : '');
+  }, []);
+  useEffect(() => {
     return () => {
-      localStorage.setItem('React2024Q3', search);
+      window.localStorage.setItem('React2024Q3', search);
     };
+    //localStorage.setItem('React2024Q3', search);
   });
+
   const addSearchParam = (value: string) => {
     setSearch(value);
-    setSearchParams({ search: value });
+    //setSearchParams({ search: value });
   };
   const sendSearchParam = (value: string) => {
     dispatch(setSearchParam(value));
-    setSearchParams({ search: value });
+    //setSearchParams({ search: value });
     context?.setActivePagina(1);
   };
   return (
@@ -40,7 +48,7 @@ const Search = () => {
           className="style.search_input"
         />
       </label>
-      <Link to={`/main?search=${searchParams.get('search')}`}>
+      <Link href="/main">
         <Btn
           onClick={() => sendSearchParam(search)}
           text="Search"

@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { Context } from '../Context/Context';
+'use client';
 
-export const DetailedCard = () => {
+import { useContext } from 'react';
+import { Context } from '../../../../components/Context/Context';
+import Link from 'next/link';
+
+const DetailedCard = () => {
   const context = useContext(Context);
 
   return (
@@ -69,7 +71,7 @@ export const DetailedCard = () => {
             {context?.checkedProduct?.price}
           </p>
         </div>
-        <Link to={'/main'}>
+        <Link href="/main">
           <p id="close-modal" className="linkandbutton">
             Close
           </p>
@@ -78,3 +80,5 @@ export const DetailedCard = () => {
     </section>
   );
 };
+
+export default DetailedCard;

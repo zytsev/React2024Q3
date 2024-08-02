@@ -30,8 +30,6 @@ export interface BtnProps {
 // }
 export interface PropsPagination {
   arrFromApi: card[] | null | undefined;
-  setCardsOnPagina: (i: number) => void;
-  cardsOnPagina: number;
 }
 export interface PropsDetailedCard {
   paramCard: card;
