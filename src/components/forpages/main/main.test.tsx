@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import App from '../../App';
+import App from '../../../App';
 import { vitest } from 'vitest';
-import * as reduxHooks from '../../redux/store';
+import * as reduxHooks from '../../../redux/store';
 
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';

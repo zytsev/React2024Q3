@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from 'react';
-import { Context } from '../../../../components/Context/Context';
+import { Context } from '../../../../Context/Context';
 import Link from 'next/link';
 
 const DetailedCard = () => {

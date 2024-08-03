@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import PopUp from './popUp';
-import App from '../../App';
+import App from '../../pages';
 import { vitest } from 'vitest';
 import * as reduxHooks from '../../redux/store';
 import { Provider } from 'react-redux';

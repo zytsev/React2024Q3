@@ -1,6 +1,5 @@
-import PagintPopup from '../../components/pagelayout/PagintPopup';
-import Container from '../../components/pagelayout/Container';
-import ListCard from '../../pages/Main/ListCard';
+import PagintPopup from '../../pagelayout/PagintPopup';
+import Container from '../../pagelayout/Container';
 
 export default function MainLayout({
   children,
@@ -10,7 +9,7 @@ export default function MainLayout({
   return (
     <Container>
       <div className="main-container">
-        <ListCard />
+        {/* <ListCard /> */}
         {children}
       </div>
       <PagintPopup />

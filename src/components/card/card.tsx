@@ -1,3 +1,5 @@
+'use client';
+
 import style from './card.module.css';
 import { card } from '../../assets/types/types';
 
@@ -18,7 +20,9 @@ const Card = (paramFromApi: card) => {
 
   return (
     <div
-      onClick={() => context?.getProd(paramFromApi.id)}
+      onClick={() => {
+        context?.setCeckedProduct(paramFromApi);
+      }}
       className="list_container"
       data-testid="card"
     >

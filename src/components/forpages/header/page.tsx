@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import style from './header.module.css';
-import Search from '../../components/search/search';
-import Btn from '../../components/Btn/Btn';
-import { Context } from '../../components/Context/Context';
+import Search from '../../search/search';
+import Btn from '../../Btn/Btn';
+import { Context } from '../../Context/Context';
 import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 //import { themeIkons } from '../../assets/theme/themeIkons';

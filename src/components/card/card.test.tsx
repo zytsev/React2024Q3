@@ -1,4 +1,4 @@
-import Header from '../../app/header/page';
+import Header from '../forpages/header/page';
 import * as reduxHooks from '../../redux/store';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { vi, vitest } from 'vitest';
