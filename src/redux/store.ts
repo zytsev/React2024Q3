@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import searchReducer from './slice/searchParamSlice';
 import checkCardReducer from './slice/checkCardSlice';
@@ -14,6 +14,20 @@ export const makeStore = () => {
       getDefaultMiddleware().concat(coffeeApi.middleware),
   });
 };
+// Create the root reducer separately so we can extract the RootState type
+const rootReducer = combineReducers({
+  searchParam: searchReducer,
+  checkCard: checkCardReducer,
+  [coffeeApi.reducerPath]: coffeeApi.reducer,
+});
+
+export const setupStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 // Infer the type of makeStore
 export type AppStore = ReturnType<typeof makeStore>;

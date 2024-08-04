@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { Pagination } from './Paginatin';
 
-import { vi, vitest } from 'vitest';
+import { vitest } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 
 const exampleCard = {
@@ -20,11 +20,7 @@ describe('Pagination component', () => {
   it('should render element with  passed 1  card ', () => {
     const component = render(
       <BrowserRouter>
-        <Pagination
-          arrFromApi={[exampleCard]}
-          setCardsOnPagina={vi.fn()}
-          cardsOnPagina={1}
-        />
+        <Pagination arrFromApi={[exampleCard]} />
       </BrowserRouter>
     );
     expect(component).toMatchSnapshot();
