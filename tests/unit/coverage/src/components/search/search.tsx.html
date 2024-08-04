@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">95.91% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/48</span>
+                <span class='fraction'>47/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">95.91% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/48</span>
+                <span class='fraction'>47/49</span>
             </div>
         
             
@@ -117,19 +117,29 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,13 +148,19 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -171,34 +187,42 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useContext, useEffect } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use client';
+&nbsp;
+import React, { useContext, useEffect } from 'react';
 import style from './search.module.css';
 //import { SearchProps } from '../../assets/types/types';
 import Btn from '../Btn/Btn';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from '../../services/redux/store/store';
-import { setSearchParam } from '../../services/redux/slice/searchParamSlice';
+//import { Link, useSearchParams } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/store';
+import { setSearchParam } from '../../redux/slice/searchParamSlice';
 import { Context } from '../Context/Context';
+import Link from 'next/link';
 &nbsp;
 const Search = () =&gt; {
-  const searchFromLS = localStorage.getItem('React2024Q3');
-  const [search, setSearch] = React.useState(<span class="branch-0 cbranch-no" title="branch not covered" >searchFromLS ? searchFromLS : '</span>');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = React.useState('');
+  //const [searchParams, setSearchParams] = useSearchParams();
   const context = useContext(Context);
   const dispatch = useAppDispatch();
 &nbsp;
   useEffect(() =&gt; {
+    const searchFromLS = window.localStorage.getItem('React2024Q3');
+    setSearch(<span class="branch-0 cbranch-no" title="branch not covered" >searchFromLS ? searchFromLS : '</span>');
+  }, []);
+  useEffect(() =&gt; {
     return () =&gt; {
-      localStorage.setItem('React2024Q3', search);
+      window.localStorage.setItem('React2024Q3', search);
     };
+    //localStorage.setItem('React2024Q3', search);
   });
+&nbsp;
   const addSearchParam = <span class="fstat-no" title="function not covered" >(value: string) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setSearch(value);</span>
-<span class="cstat-no" title="statement not covered" >    setSearchParams({ search: value });</span>
+    //setSearchParams({ search: value });
 <span class="cstat-no" title="statement not covered" >  };</span>
   const sendSearchParam = (value: string) =&gt; {
     dispatch(setSearchParam(value));
-    setSearchParams({ search: value });
+    //setSearchParams({ search: value });
 <span class="branch-0 cbranch-no" title="branch not covered" >    context?.setActivePagina(1</span>);
   };
   return (
@@ -213,7 +237,7 @@ const Search = () =&gt; {
           className="style.search_input"
         /&gt;
       &lt;/label&gt;
-      &lt;Link to={`/main?search=${searchParams.get('search')}`}&gt;
+      &lt;Link href="/main"&gt;
         &lt;Btn
           onClick={() =&gt; sendSearchParam(search)}
           text="Search"
@@ -232,7 +256,7 @@ export default Search;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-27T21:01:21.547Z
+                at 2024-08-04T20:48:43.733Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

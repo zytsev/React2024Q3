@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
+import Layout from '../layout';
+//import PopUp from '../../components/pagelayout/PagintPopup';
 
 describe('Header component', () => {
   const initialState = { output: 10 };
@@ -20,5 +22,18 @@ describe('Header component', () => {
     );
 
     expect(screen.getByText('Error')).toBeInTheDocument();
+  });
+  it('Layout renders', () => {
+    store = mockStore(initialState);
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <Layout children={undefined} />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Error')).toBeInTheDocument();
+    expect(screen.getByText(/Input name of coffee/)).toBeInTheDocument();
   });
 });
