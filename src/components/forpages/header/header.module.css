@@ -1,0 +1,14 @@
+.header_wrapper {
+  display: flex;
+  background-color: burlywood;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 1rem 0 1rem 1rem; */
+  flex-wrap: wrap;
+}
+
+.header_togleTheme {
+  width: 30px;
+  cursor: pointer;
+}

@@ -1,0 +1,374 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  /* place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#root {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.list_container {
+  display: flex;
+  height: 446px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 226px;
+  border-radius: 40px;
+  border: 1px solid var(--border-light, #c1b6ad);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.img_card {
+  height: 14rem;
+  border-radius: 40px;
+  background-size: contain;
+}
+
+.list-img-wrapper1 {
+  background: url(/coffee-1.png) no-repeat center;
+}
+
+.list-img-wrapper2 {
+  background: url(/coffee-2.png) no-repeat center;
+}
+
+.list-img-wrapper3 {
+  background: url(/coffee-3.png) no-repeat center;
+}
+
+.list-img-wrapper4 {
+  background: url(/coffee-4.png) no-repeat center;
+}
+
+.list-img-wrapper5 {
+  background: url(/coffee-5.png) no-repeat center;
+}
+
+.list-img-wrapper6 {
+  background: url(/coffee-6.png) no-repeat center;
+}
+
+.list-img-wrapper7 {
+  background: url(/coffee-7.png) no-repeat center;
+}
+
+.list-img-wrapper8 {
+  background: url(/coffee-8.png) no-repeat center;
+}
+
+.tea-img1 {
+  background: url(/tea-1.png) no-repeat center;
+}
+
+.tea-img2 {
+  background: url(/tea-2.png) no-repeat center;
+}
+
+.tea-img3 {
+  background: url(/tea-3.png) no-repeat center;
+}
+
+.tea-img4 {
+  background: url(/tea-4.png) no-repeat center;
+}
+
+.dessert-img1 {
+  background: url(/dessert-1.png) no-repeat center;
+}
+
+.dessert-img2 {
+  background: url(/dessert-2.png) no-repeat center;
+}
+
+.dessert-img3 {
+  background: url(/dessert-3.png) no-repeat center;
+}
+
+.dessert-img4 {
+  background: url(/dessert-4.png) no-repeat center;
+}
+
+.dessert-img5 {
+  background: url(/dessert-5.png) no-repeat center;
+}
+
+.dessert-img6 {
+  background: url(/dessert-6.png) no-repeat center;
+}
+
+.dessert-img7 {
+  background: url(/dessert-7.png) no-repeat center;
+}
+
+.dessert-img8 {
+  background: url(/dessert-8.png) no-repeat center;
+}
+
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+/*Start modal DetailedCard*/
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.heading-3 {
+  font-size: xx-large;
+}
+
+/* .modal-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(57 53 53 / 71%);
+} */
+
+.modale {
+  position: sticky;
+  top: 8rem;
+  display: flex;
+  max-width: 50%;
+  padding: 16px;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 40px;
+  gap: 20px;
+  background-color: #e1d4c9;
+  margin: 1rem 1rem 0 0;
+}
+
+#modal-img {
+  border-radius: 40px;
+  width: 100%;
+  height: 12rem;
+  background-size: cover;
+}
+
+.modale-colum {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 20px;
+  width: 100%;
+}
+
+.switch-item,
+.modal-button {
+  display: flex;
+  /* padding: 8px 16px 8px 8px; */
+  justify-content: center;
+  align-items: center;
+  /* gap: 8px; */
+  border-radius: 100px;
+  border: 1px solid var(--border-light, #c1b6ad);
+  cursor: pointer;
+  transition: 1s;
+}
+
+.modal-buttons {
+  margin: 0;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.price-wrapper,
+.alert-wrapper {
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.alert-wrapper > img {
+  align-self: flex-start;
+  margin: 13px 8px 0 0;
+}
+
+#close-modal {
+  cursor: pointer;
+  text-align: center;
+  border-radius: 100px;
+  border: 1px solid var(--border-dark, #665f55);
+  padding: 10px 78px;
+}
+
+.modal-text {
+  color: inherit;
+}
+
+.modal-button:hover {
+  background-color: #665f55;
+  color: #e1d4c9;
+}
+
+.modal-button:hover .modal-circle {
+  color: #665f55;
+}
+
+.color-branco {
+  color: #e1d4c9;
+}
+
+.color-dark {
+  color: #403f3d;
+}
+
+.modale-colum > h3,
+.modale-colum > P,
+.modal-text,
+.price-wrapper > p {
+  margin: 0;
+}
+
+#sizes,
+#additives {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.off-scrol {
+  overflow-y: hidden;
+}
+
+/*start style switch*/
+
+.switch {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.switch-item-circle,
+.modal-circle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: var(--border-light, #c1b6ad);
+}
+
+.switch-text {
+  margin: 0;
+}
+
+.colortextcheked,
+.switch-item:hover {
+  color: var(--text-light, #e1d4c9);
+}
+
+.colorcirclecheked {
+  background: #e1d4c9;
+}
+
+.backgr-dark,
+.switch-item:hover {
+  background-color: #665f55;
+}
+
+.backgr-dark h3,
+.backgr-dark p,
+.backgr-dark label,
+.backgr-dark button,
+.backgr-dark span {
+  color: antiquewhite;
+}
+
+.backgr-dark button,
+.backgr-dark .modale {
+  background-color: rgb(40, 37, 37);
+}
