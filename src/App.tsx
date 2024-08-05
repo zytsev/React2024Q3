@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Header from './app/header/page';
+import Header from '../app/components/header/header';
 import Main from './pages/main/ListCard';
-import NotFound from './app/notfound/page';
+import NotFound from '../app/components/notfound/notfound';
 import DetailedCard from './app/main/card/[id]/page';
 import './App.css';
 

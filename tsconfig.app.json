@@ -28,6 +28,15 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true
   },
-  "include": ["src", "./dist/types/**/*.ts", "./next-env.d.ts"],
+  "include": [
+    "src",
+    "./dist/types/**/*.ts",
+    "./next-env.d.ts",
+    "app/components/header",
+    "app/components/search",
+    "app/components/btn",
+    "app/components/notfound/notfound.test.tsx",
+    "app/components/notfound/notfound.tsx"
+  ],
   "exclude": ["./node_modules"]
 }

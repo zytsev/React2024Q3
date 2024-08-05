@@ -1,6 +1,6 @@
 'use client';
 import '../../app/index.css';
-import NotFound from '../../app/notfound/page';
+import NotFound from '../../../app/components/notfound/notfound';
 //import { MainProps } from '../../assets/types/types';
 
 import { useContext } from 'react';

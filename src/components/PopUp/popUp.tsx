@@ -1,6 +1,6 @@
 import style from './popUp.module.css';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
-import Btn from '../../components/Btn/Btn';
+import Btn from '../../../app/components/btn/btn';
 import { clearAllCheckedCards } from '../../redux/slice/checkCardSlice';
 import { toCsv } from '../../services/downloadCSV/downloadCSV';
 import { Context } from '../../components/Context/Context';

@@ -1,10 +1,10 @@
-import Header from './page';
+import Header from './header';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import Layout from '../layout';
+import Layout from '../../../src/app/layout';
 //import PopUp from '../../components/pagelayout/PagintPopup';
 
 describe('Header component', () => {

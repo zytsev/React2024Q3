@@ -4,18 +4,18 @@ import { createContext, useState, ReactNode } from 'react';
 import getApi from '../../services/getApi/getApi';
 import { card } from '../../assets/types/types';
 
-interface context {
+export interface contextType {
   checkedProduct: card | null;
-  getProd: (id: number) => void;
   activePagina: number;
-  setActivePagina: (pagina: number) => void;
   isDark: boolean;
-  togleTheme: () => void;
   cardsOnPagina: number | null;
+  getProd: (id: number) => void;
+  setActivePagina: (pagina: number) => void;
+  togleTheme: () => void;
   setCardsOnPagina: (value: number) => void;
 }
 type Props = { children: ReactNode };
-export const Context = createContext<context | null>(null);
+export const Context = createContext<contextType | null>(null);
 
 export const ContextProvider = ({ children }: Props) => {
   const [checkedProduct, setCeckedProduct] = useState<card | null>(null);

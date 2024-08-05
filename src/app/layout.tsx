@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Header from './header/page';
+import Header from '../../app/components/header/header';
 import StoreProvider from './StoreProvider';
 import { ContextProvider } from '../components/Context/Context';
 

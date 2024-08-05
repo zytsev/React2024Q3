@@ -1,4 +1,4 @@
-import Btn from './Btn';
+import Btn from './btn';
 import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom';

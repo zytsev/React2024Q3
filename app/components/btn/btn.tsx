@@ -1,4 +1,4 @@
-import { BtnProps } from '../../assets/types/types';
+import { BtnProps } from '../../../src/assets/types/types';
 
 const Btn = (props: BtnProps) => {
   return (

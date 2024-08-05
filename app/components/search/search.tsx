@@ -3,11 +3,11 @@
 import React, { useContext, useEffect } from 'react';
 import style from './search.module.css';
 //import { SearchProps } from '../../assets/types/types';
-import Btn from '../Btn/Btn';
+import Btn from '../btn/btn';
 //import { Link, useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from '../../redux/store';
-import { setSearchParam } from '../../redux/slice/searchParamSlice';
-import { Context } from '../Context/Context';
+import { useAppDispatch } from '../../../src/redux/store';
+import { setSearchParam } from '../../../src/redux/slice/searchParamSlice';
+import { Context } from '../../../src/components/Context/Context';
 import Link from 'next/link';
 
 const Search = () => {
