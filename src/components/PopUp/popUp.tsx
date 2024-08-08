@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../redux/store';
 import Btn from '../../../app/components/btn/btn';
 import { clearAllCheckedCards } from '../../redux/slice/checkCardSlice';
 import { toCsv } from '../../services/downloadCSV/downloadCSV';
-import { Context } from '../../components/Context/Context';
+import { Context } from '../../../app/components/Context/Context';
 import { useContext } from 'react';
 
 const PopUp = () => {

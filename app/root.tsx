@@ -1,9 +1,8 @@
-import { Links, Meta, Scripts } from '@remix-run/react';
-import { ContextProvider } from '../src/components/Context/Context';
+import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import { ContextProvider } from './components/Context/Context';
 import React from 'react';
-
 import './App.css';
-import Home from './components/home/home';
+import Header from './components/header/header';
 
 export default function App() {
   return (
@@ -15,7 +14,8 @@ export default function App() {
       </head>
       <body>
         <ContextProvider>
-          <Home />
+          <Header />
+          <Outlet />
         </ContextProvider>
         <Scripts />
       </body>

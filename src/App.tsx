@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from '../app/components/header/header';
-import Main from './pages/main/ListCard';
+import Main from '../app/components/listcard/ListCard';
 import NotFound from '../app/components/notfound/notfound';
 import DetailedCard from './app/main/card/[id]/page';
 import './App.css';

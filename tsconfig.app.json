@@ -36,7 +36,12 @@
     "app/components/search",
     "app/components/btn",
     "app/components/notfound/notfound.test.tsx",
-    "app/components/notfound/notfound.tsx"
+    "app/components/notfound/notfound.tsx",
+    "app/components/pagination/pagination.test.tsx",
+    "app/components/listcard/ListCard.tsx",
+    "app/components/card/card.test.tsx",
+    "app/components/card/card.tsx",
+    "app/components/Context"
   ],
   "exclude": ["./node_modules"]
 }

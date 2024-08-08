@@ -1,6 +1,6 @@
 import PagintPopup from '../../components/pagelayout/PagintPopup';
 import Container from '../../components/pagelayout/Container';
-import ListCard from '../../pages/main/ListCard';
+import ListCard from '../../../app/components/listcard/ListCard';
 
 export default function MainLayout({
   children,

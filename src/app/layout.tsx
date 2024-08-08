@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Header from '../../app/components/header/header';
 import StoreProvider from './StoreProvider';
-import { ContextProvider } from '../components/Context/Context';
+import { ContextProvider } from '../../app/components/Context/Context';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {

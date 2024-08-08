@@ -20,6 +20,23 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: inherit;
+}
+
 .list_container {
   display: flex;
   height: 446px;
@@ -206,7 +223,7 @@
   width: 100%;
 }
 
-.alert-wrapper > img {
+.alert-wrapper>img {
   align-self: flex-start;
   margin: 13px 8px 0 0;
 }
@@ -240,10 +257,10 @@
   color: #403f3d;
 }
 
-.modale-colum > h3,
-.modale-colum > P,
+.modale-colum>h3,
+.modale-colum>P,
 .modal-text,
-.price-wrapper > p {
+.price-wrapper>p {
   margin: 0;
 }
 
@@ -309,6 +326,7 @@
 .backgr-dark .modale {
   background-color: rgb(40, 37, 37);
 }
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
