@@ -322,6 +322,7 @@ a {
   color: antiquewhite;
 }
 
+
 .backgr-dark button,
 .backgr-dark .modale {
   background-color: rgb(40, 37, 37);
@@ -346,4 +347,9 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+header,
+footer {
+  background-color: burlywood
 }

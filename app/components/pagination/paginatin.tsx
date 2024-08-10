@@ -1,6 +1,6 @@
 import style from './pagination.module.css';
-import { useCoffee } from '../Context/useCoffee';
-import { card } from '../../../src/assets/types/types';
+import useCoffee from '../../services/context/useCoffee';
+import { card } from '../../assets/types/types';
 interface PropsPagination {
   arrFromApi: card[] | null | undefined;
 }

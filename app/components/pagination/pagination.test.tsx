@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Pagination } from './paginatin';
+import Pagination from './paginatin';
 
 import { vi, vitest } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';

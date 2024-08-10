@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "jsx": "preserve",
     /* Linting */
     "strict": true,
@@ -41,7 +41,19 @@
     "app/components/listcard/ListCard.tsx",
     "app/components/card/card.test.tsx",
     "app/components/card/card.tsx",
-    "app/components/Context"
+    "app/components/Context",
+    "app/services/getApi",
+    "app/assets/types",
+    "app/components/PopUp/popUp.test.tsx",
+    "app/components/PopUp/popUp.tsx",
+    "app/services/downloadCSV",
+    "app/services/redux/coffeeApi",
+    "app/services/redux/selectors",
+    "app/services/redux/slice",
+    "app/services/redux/store.ts",
+    "app/services/redux/StoreProvider.tsx",
+    "app/components/datailedCard/detailedCard.tsx",
+    "app/components/datailedCard/detailedCard.test.tsx"
   ],
   "exclude": ["./node_modules"]
 }

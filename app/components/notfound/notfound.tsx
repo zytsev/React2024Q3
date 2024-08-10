@@ -3,7 +3,7 @@ import style from './notFound.module.css';
 const NotFound = () => {
   return (
     <div className={style.block}>
-      <p className={style.p}>Page not found :-/</p>
+      <p className={style.p}>Coffee not found :-/</p>
     </div>
   );
 };
