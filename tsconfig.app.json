@@ -7,21 +7,54 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
-    "jsx": "react-jsx",
-
+    "emitDeclarationOnly": true,
+    "jsx": "preserve",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "plugins": [{ "name": "next" }],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "app/**/*",
+    "./dist/types/**/*.ts",
+    "./next-env.d.ts",
+    "app/components/header",
+    "app/components/search",
+    "app/components/btn",
+    "app/components/notfound/notfound.test.tsx",
+    "app/components/notfound/notfound.tsx",
+    "app/components/pagination/pagination.test.tsx",
+    "app/components/listcard/ListCard.tsx",
+    "app/components/card/card.test.tsx",
+    "app/components/card/card.tsx",
+    "app/components/Context",
+    "app/services/getApi",
+    "app/assets/types",
+    "app/components/PopUp/popUp.test.tsx",
+    "app/components/PopUp/popUp.tsx",
+    "app/services/downloadCSV",
+    "app/services/redux/coffeeApi",
+    "app/services/redux/selectors",
+    "app/services/redux/slice",
+    "app/services/redux/store.ts",
+    "app/services/redux/StoreProvider.tsx",
+    "app/components/datailedCard/detailedCard.tsx",
+    "app/components/datailedCard/detailedCard.test.tsx"
+  ],
+  "exclude": ["./node_modules"]
 }
