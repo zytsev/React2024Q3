@@ -6,14 +6,11 @@ import useCoffee from '../../services/context/useCoffee';
 //import { useAppSelector } from '../../redux/store';
 //import { useGetAllCoffeeQuery } from '../../redux/coffeeApi/coffeeApi';
 //import { selectSearchParam } from '../../redux/selectors/selectors';
-import { card } from '../../assets/types/types';
+import { propsListcard } from '../../assets/types/types';
 import Card from '../card/card';
 import { Outlet } from '@remix-run/react';
 import Pagination from '../pagination/paginatin';
 import PopUp from '../PopUp/popUp';
-interface propsListcard {
-  data: card[] | null;
-}
 
 const ListCard = ({ data }: propsListcard) => {
   const { activePagina, cardsOnPagina, isDark } = useCoffee();
@@ -36,17 +33,17 @@ const ListCard = ({ data }: propsListcard) => {
     <>
       {isLoading && <h2>Loading...</h2>}
       <section className={`${isDark && 'backgr-dark'}`}>
-        <div className="listWrapper">
+        <div className="main-container ">
           <div className={style.main_wrapper}>
             {arrFromApi.map((item) => (
               <Card key={item.id} {...item} />
             ))}
           </div>
+          <Outlet />
         </div>
         {data === null && <NotFound />}
         <Pagination arrFromApi={data} />
         <PopUp />
-        <Outlet />
       </section>
     </>
   );

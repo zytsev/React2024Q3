@@ -35,3 +35,6 @@ export interface PropsDetailedCard {
   paramCard: card;
   showCard: () => void;
 }
+export interface propsListcard {
+  data: card[] | null;
+}

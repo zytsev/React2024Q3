@@ -1,12 +1,12 @@
 import style from './card.module.css';
 import { card } from '../../assets/types/types';
 import { Link } from '@remix-run/react';
-import useCoffee from '../../services/context/useCoffee';
+//import useCoffee from '../../services/context/useCoffee';
 import { setCheckedCards } from '../../services/redux/slice/checkCardSlice';
 import { useAppSelector, useAppDispatch } from '../../services/redux/store';
 
 const Card = (paramFromApi: card) => {
-  const { getProd } = useCoffee();
+  //const { getProd } = useCoffee();
   const dispatch = useAppDispatch();
   const checkedCards = useAppSelector((state) => state.checkCard.checkedCards);
 
@@ -16,11 +16,11 @@ const Card = (paramFromApi: card) => {
 
   return (
     <div
-      onClick={() => getProd(paramFromApi.id)}
+      //onClick={() => getProd(paramFromApi.id)}
       className="list_container"
       data-testid="card"
     >
-      <Link to={`$/card${paramFromApi.id}`} style={{ color: '#213547' }}>
+      <Link to={`products/${paramFromApi.id}`} style={{ color: '#213547' }}>
         <div className={`${paramFromApi.imgClass} img_card`}></div>
         <h3 className={style.list_title}>{paramFromApi.title}</h3>
         <p className={style.list_text}>{paramFromApi.text}</p>

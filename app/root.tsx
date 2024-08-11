@@ -1,7 +1,6 @@
 import {
   Links,
   Meta,
-  Outlet,
   Scripts,
   useLoaderData,
   useNavigation,
@@ -21,7 +20,7 @@ import StoreProvider from './services/redux/StoreProvider';
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const search = url.searchParams.get('search');
-  return await getApi(search);
+  return await getApi('search', search);
 }
 
 export default function App() {
@@ -42,7 +41,6 @@ export default function App() {
           <ContextProvider>
             <Header />
             {isSubmitting ? <h2>Loading...</h2> : <ListCard data={data} />}
-            <Outlet />
           </ContextProvider>
         </StoreProvider>
 

@@ -1,16 +1,15 @@
-'use client';
+import { Link } from '@remix-run/react';
+import { propsListcard } from '../../assets/types/types';
+import useCoffee from '../../services/context/useCoffee';
 
-import { useContext } from 'react';
-import { Context } from '../../../../../app/components/Context/Context';
-import Link from 'next/link';
-
-const DetailedCard = () => {
-  const context = useContext(Context);
-
+const DetailedCard = ({ data }: propsListcard) => {
+  if (!data) throw new Error('Not found');
+  const { isDark } = useCoffee();
+  const { imgClass, title, text, price } = data[0];
   return (
-    <section className={`modale ${context?.isDark && 'backgr-dark'}`}>
+    <section className={`modale ${isDark && 'backgr-dark'}`}>
       <div className="left-container">
-        <img id="modal-img" className={context?.checkedProduct?.imgClass} />
+        <img id="modal-img" className={imgClass} />
         <div className="alert-wrapper">
           <img src="/info-empty.svg" alt="info" />
           <p className="caption">
@@ -22,10 +21,10 @@ const DetailedCard = () => {
       </div>
       <div className="modale-colum">
         <h3 id="name" className="heading-3">
-          {context?.checkedProduct?.title}
+          {title}
         </h3>
         <p id="description" className="medium">
-          {context?.checkedProduct?.text}
+          {text}
         </p>
         <div className="size-wrapper">
           <p id="sizes" className="medium">
@@ -68,10 +67,10 @@ const DetailedCard = () => {
         <div className="price-wrapper">
           <p className="heading-3">Total:</p>
           <p id="price" className="heading-3">
-            {context?.checkedProduct?.price}
+            {price}
           </p>
         </div>
-        <Link href="/main">
+        <Link to="/">
           <p id="close-modal" className="linkandbutton">
             Close
           </p>
