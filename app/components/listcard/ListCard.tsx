@@ -14,11 +14,7 @@ import PopUp from '../PopUp/popUp';
 
 const ListCard = ({ data }: propsListcard) => {
   const { activePagina, cardsOnPagina, isDark } = useCoffee();
-  //const cardsOnPagina = context?.cardsOnPagina || 3;
-  //const activePagina = context?.activePagina || 1;
 
-  // const searchParam = useAppSelector(selectSearchParam);
-  //const { data, error, isLoading } = useGetAllCoffeeQuery(searchParam);
   const isLoading = false;
   const error = false;
 

@@ -1,29 +1,25 @@
 import DetailedCard from './detailedCard';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import * as Hooks from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { vi } from 'vitest';
+import { ContextProvider } from '../../services/context/context';
 
-vi.mock('react');
-const mockedContext = vi.spyOn(Hooks, 'useContext');
+import { BrowserRouter } from 'react-router-dom';
 
 describe('DetailedCard component', () => {
+  const exampleProduct = {
+    id: 5,
+    raiting: 7,
+    category: 'tea',
+    imgClass: 'any',
+    title: 'Title',
+    text: 'Examle',
+    price: 2,
+  };
   it('showld render DetailedCard', () => {
-    mockedContext.mockResolvedValue({
-      checkedProduct: {
-        id: 5,
-        raiting: 7,
-        category: 'tea',
-        imgClass: 'any',
-        title: 'Title',
-        text: 'Examle',
-        price: 2,
-      },
-    });
-
     render(
       <BrowserRouter>
-        <DetailedCard />
+        <ContextProvider>
+          <DetailedCard data={[exampleProduct]} />
+        </ContextProvider>
       </BrowserRouter>
     );
     expect(screen.getByText('Close')).toBeInTheDocument();
@@ -32,7 +28,9 @@ describe('DetailedCard component', () => {
   it(' DetailedCard not to be in Document after click "Close"', () => {
     render(
       <BrowserRouter>
-        <DetailedCard />
+        <ContextProvider>
+          <DetailedCard data={[exampleProduct]} />
+        </ContextProvider>
       </BrowserRouter>
     );
     waitFor(() => {

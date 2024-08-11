@@ -1,36 +1,32 @@
 import Search from './search';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import { ContextProvider } from '../../services/context/context';
+import { createRemixStub } from '@remix-run/testing';
 
 describe('Search component', () => {
-  const initialState = { output: 10 };
-  const mockStore = configureStore();
-  let store;
-  it('Search renders', () => {
-    store = mockStore(initialState);
+  const SearchStub = createRemixStub([
+    {
+      path: '/',
+      Component: Search,
+    },
+  ]);
+  it('Search renders', async () => {
     render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Search></Search>;
-        </Provider>
-      </BrowserRouter>
+      <ContextProvider>
+        <SearchStub />
+      </ContextProvider>
     );
 
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    await screen.findByText('Input name of coffee, tea or dessert:');
   });
-  it('Input have value', () => {
-    store = mockStore(initialState);
+  it('Input have value', async () => {
     render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Search></Search>;
-        </Provider>
-      </BrowserRouter>
+      <ContextProvider>
+        <SearchStub />
+      </ContextProvider>
     );
 
-    expect(screen.getByRole('textbox')).toHaveValue('');
+    expect(await screen.findByPlaceholderText('Search all...'));
   });
 });

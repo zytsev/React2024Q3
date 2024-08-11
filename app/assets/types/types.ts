@@ -18,16 +18,6 @@ export interface BtnProps {
   text: string;
   onClick?: () => void;
 }
-// export interface HeaderProps {
-//   onClick: (value: string) => void;
-//   // searchParam: string | undefined;
-// }
-//export interface SearchProps extends HeaderProps {}
-// export interface MainProps {
-//   arrFromApi: card[] | null;
-//   // cardsOnPagina: number;
-//   // activePagina: number;
-// }
 export interface PropsPagination {
   arrFromApi: card[] | null | undefined;
 }
@@ -37,4 +27,16 @@ export interface PropsDetailedCard {
 }
 export interface propsListcard {
   data: card[] | null;
+}
+export interface contextType {
+  searchParam: string;
+  activePagina: number;
+  isDark: boolean;
+  cardsOnPagina: number;
+  basket: card[];
+  setActivePagina: (pagina: number) => void;
+  togleTheme: () => void;
+  setCardsOnPagina: (value: number) => void;
+  setSearchParam: (value: string) => void;
+  setBasket: (cards: card[]) => void;
 }

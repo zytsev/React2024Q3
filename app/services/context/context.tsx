@@ -1,19 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
-import { card } from '../../assets/types/types';
+import { card, contextType } from '../../assets/types/types';
 
-export interface contextType {
-  searchParam: string;
-  activePagina: number;
-  isDark: boolean;
-  cardsOnPagina: number;
-  basket: card[];
-
-  setActivePagina: (pagina: number) => void;
-  togleTheme: () => void;
-  setCardsOnPagina: (value: number) => void;
-  setSearchParam: (value: string) => void;
-  setBasket: (cards: card[]) => void;
-}
 type Props = { children: ReactNode };
 export const Context = createContext<contextType | null>(null);
 

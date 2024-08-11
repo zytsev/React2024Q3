@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react';
 import Pagination from './paginatin';
+import { ContextProvider } from '../../services/context/context';
 
-import { vi, vitest } from 'vitest';
+import { vitest } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 
 const exampleCard = {
@@ -20,11 +21,9 @@ describe('Pagination component', () => {
   it('should render element with  passed 1  card ', () => {
     const component = render(
       <BrowserRouter>
-        <Pagination
-          arrFromApi={[exampleCard]}
-          setCardsOnPagina={vi.fn()}
-          cardsOnPagina={1}
-        />
+        <ContextProvider>
+          <Pagination arrFromApi={[exampleCard]} />
+        </ContextProvider>
       </BrowserRouter>
     );
     expect(component).toMatchSnapshot();

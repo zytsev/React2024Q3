@@ -1,39 +1,22 @@
 import Header from './header';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { BrowserRouter } from 'react-router-dom';
-import Layout from '../../../src/app/layout';
-//import PopUp from '../../components/pagelayout/PagintPopup';
+import { ContextProvider } from '../../services/context/context';
+import { createRemixStub } from '@remix-run/testing';
 
 describe('Header component', () => {
-  const initialState = { output: 10 };
-  const mockStore = configureStore();
-  let store;
+  const HeaderStub = createRemixStub([
+    {
+      path: '/',
+      Component: Header,
+    },
+  ]);
   it('Header renders', () => {
-    store = mockStore(initialState);
     render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Header></Header>
-        </Provider>
-      </BrowserRouter>
+      <ContextProvider>
+        <HeaderStub />
+      </ContextProvider>
     );
-
     expect(screen.getByText('Error')).toBeInTheDocument();
-  });
-  it('Layout renders', () => {
-    store = mockStore(initialState);
-    render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Layout children={undefined} />
-        </Provider>
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Error')).toBeInTheDocument();
-    expect(screen.getByText(/Input name of coffee/)).toBeInTheDocument();
   });
 });

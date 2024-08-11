@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import PopUp from './popUp';
-import App from '../../../src/App';
 import { vitest } from 'vitest';
 import * as reduxHooks from '../../services/redux/store';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter } from 'react-router-dom';
+import { createRemixStub } from '@remix-run/testing';
+import Header from '../header/header';
+import { ContextProvider } from '../../services/context/context';
 
 const exampleCard = {
   id: 7,
@@ -24,14 +25,26 @@ describe('PopUp component', () => {
   const initialState = {};
   const mockStore = configureStore();
   let store;
+  const HeaderStub = createRemixStub([
+    {
+      path: '/',
+      Component: Header,
+    },
+  ]);
+  const PopUpStub = createRemixStub([
+    {
+      path: '/',
+      Component: PopUp,
+    },
+  ]);
   it('not should render element without  passed cards ', () => {
     store = mockStore(initialState);
     mockedUseSelector.mockReturnValue([]);
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ContextProvider>
+          <HeaderStub />
+        </ContextProvider>
       </Provider>
     );
     expect(screen.queryByText('items are selected')).not.toBeInTheDocument();
@@ -41,7 +54,9 @@ describe('PopUp component', () => {
     mockedUseSelector.mockReturnValue([exampleCard]);
     const component = render(
       <Provider store={store}>
-        <PopUp />
+        <ContextProvider>
+          <PopUpStub />
+        </ContextProvider>
       </Provider>
     );
     expect(component).toMatchSnapshot();
