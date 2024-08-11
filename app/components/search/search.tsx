@@ -13,12 +13,10 @@ const Search = () => {
     const searchFromLS = window.localStorage.getItem('React2024Q3');
     setSearch(searchFromLS ? searchFromLS : '');
   }, []);
-  useEffect(() => {
-    window.localStorage.setItem('React2024Q3', search);
-  });
 
-  const addSearchParam = (value: string) => {
-    setSearch(value);
+  const addSearchParam = () => {
+    setActivePagina(1);
+    window.localStorage.setItem('React2024Q3', search);
   };
 
   return (
@@ -29,7 +27,7 @@ const Search = () => {
           Input name of coffee, tea or dessert:
           <input
             value={search}
-            onChange={(e) => addSearchParam(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             className="style.search_input"
             id="search-input"
             name="search"
@@ -38,7 +36,7 @@ const Search = () => {
           />
         </label>
 
-        <button onClick={() => setActivePagina(1)} data-testid="Search">
+        <button onClick={() => addSearchParam()} data-testid="Search">
           Search
         </button>
       </Form>

@@ -30,6 +30,7 @@
   },
   "include": [
     "src",
+    "app/**/*",
     "./dist/types/**/*.ts",
     "./next-env.d.ts",
     "app/components/header",
