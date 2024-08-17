@@ -39,3 +39,7 @@
 .form-pass {
   min-width: 437px;
 }
+
+.border-red {
+  border-color: red;
+}

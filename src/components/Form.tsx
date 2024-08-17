@@ -5,10 +5,16 @@ import { useAppSelector } from '../redux/store';
 import Select from 'react-select';
 import { getListOfCountrie } from '../service/getListOfCountrie';
 import { schema } from '../service/yup';
+import { useAppDispatch } from '../redux/store';
+import { addUser } from '../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { convertBase64 } from '../service/convertBase64';
 
 function Form() {
   const countries = useAppSelector((state) => state.countries.listcountries);
   const listcountries = getListOfCountrie(countries);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,9 +23,21 @@ function Form() {
     formState: { errors, isValid },
   } = useForm<user>({ resolver: yupResolver(schema), mode: 'onBlur' });
 
-  const onSubmit = (data: user) => {
-    console.log(data);
+  const onSubmit = async (data: user) => {
+    const base64 = await convertBase64(data.picture[0]);
+
+    const value = {
+      name: data.name,
+      age: data.age,
+      email: data.email,
+      password: data.password,
+      gender: data.gender,
+      state: data.state.value,
+      picture: base64,
+    };
+    dispatch(addUser(value));
     reset();
+    navigate('/');
   };
 
   return (
@@ -138,6 +156,7 @@ function Form() {
             <div className="invalid-feedb">{errors.terms?.message}</div>
           </div>
         </div>
+
         <button className="btn btn-primary" type="submit" disabled={!isValid}>
           Submit htmlForm
         </button>

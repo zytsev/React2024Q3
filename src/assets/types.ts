@@ -7,8 +7,17 @@ export interface user {
   gender: string;
   state: {
     value: string;
-    // label: string;
   };
   picture: FileList;
   terms?: boolean;
+}
+
+export interface StateUser {
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+  gender: string;
+  state: string;
+  picture: string | unknown;
 }
