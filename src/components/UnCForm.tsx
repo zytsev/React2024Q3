@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectCountrie from '../service/getListOfCountrie';
+import { getListOfCountrie } from '../service/getListOfCountrie';
 
 function UnCForm() {
   return (

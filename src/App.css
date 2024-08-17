@@ -22,17 +22,20 @@
 .invalid-feedb {
   height: 20px;
   width: 100%;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
 }
 
 .navbar-ul {
-
   display: flex;
 
   gap: 1rem;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+}
+
+.form-pass {
+  min-width: 437px;
 }
