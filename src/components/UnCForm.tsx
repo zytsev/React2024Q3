@@ -1,38 +1,93 @@
-import React from 'react';
+import { useAppSelector } from '../redux/store';
+import Select from 'react-select';
 import { getListOfCountrie } from '../service/getListOfCountrie';
+import { schema } from '../service/schemaForUnCForm';
+import { useAppDispatch } from '../redux/store';
+import { addUser } from '../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { convertBase64 } from '../service/convertBase64';
+import { useState } from 'react';
+import { ValidationError } from 'yup';
 
-function UnCForm() {
+function Form() {
+  const countries = useAppSelector((state) => state.countries.listcountries);
+  const listcountries = getListOfCountrie(countries);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const getError = (name: string) => {
+    let res = '';
+    error.forEach((elem) => {
+      elem.name === name ? (res += elem.message) : (res += '');
+    });
+    return res;
+  };
+  const [error, setError] = useState<
+    { name: string | unknown; message: string }[]
+  >([]);
+
+  async function handleForm(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    const formData = new FormData(form);
+    const formObj = Object.fromEntries(formData.entries());
+
+    try {
+      const validForm = await schema.isValid(formObj);
+      if (validForm) {
+        const file = formData.get('picture1') as File;
+        const base64 = await convertBase64(file);
+        const value = {
+          name: formObj.name as string,
+          age: Number(formObj.age),
+          email: formObj.email as string,
+          password: formObj.password as string,
+          gender: formObj.gender as string,
+          state: formObj.state1 as string,
+          picture: base64,
+        };
+        dispatch(addUser(value));
+
+        navigate('/');
+      } else {
+        await schema.validate(formObj, { abortEarly: false });
+      }
+    } catch (err) {
+      if (err instanceof ValidationError) {
+        const arrErr: { name: string | unknown; message: string }[] = [];
+        err.inner.forEach((elem) => {
+          arrErr.push({ name: elem.params?.path, message: elem.message });
+        });
+        setError(arrErr);
+      }
+    }
+  }
+
   return (
     <>
-      <h2>UnControl Form</h2>
-      <form className="needs-validation">
+      <h2>Uncontrol Form</h2>
+      <form className="needs-validation" onSubmit={(e) => handleForm(e)}>
         <div className="form-row">
           <div className="col-md-4 mb-3">
             <label htmlFor="validationCustom01">Name</label>
             <input
-              type="text"
+              name="name"
               className="form-control"
               id="validationCustom01"
               placeholder="Name"
-              value="Mark"
-              required
             />
-            <div className="invalid-feedb">
-              Required! First uppercased letter!
-            </div>
+            <div className="invalid-feedb">{getError('name')}</div>
           </div>
           <div className="col-md-4 mb-3">
             <label htmlFor="validationCustom02">Age</label>
             <input
               type="number"
+              name="age"
               className="form-control"
               id="validationCustom02"
-              placeholder="17"
-              min="1"
-              max="150"
-              required
             />
-            <div className="invalid-feedb"></div>
+            <div className="invalid-feedb">{getError('age')}</div>
           </div>
           <div className="col-md-4 mb-3">
             <label htmlFor="validationCustomUsername">Email</label>
@@ -47,39 +102,39 @@ function UnCForm() {
                 className="form-control"
                 id="validationCustomUsername"
                 placeholder="mail@example.com"
-                aria-describedby="inputGroupPrepend"
-                required
+                name="email"
               />
-              <div className="invalid-feedb">Should be e-mail.</div>
+              <div className="invalid-feedb">{getError('email')}</div>
             </div>
           </div>
         </div>
         <div className="form-row">
-          <div className="form-group mx-sm-3 mb-3">
+          <div className="form-group mx-sm-3 mb-3 form-pass">
             <label htmlFor="inputPassword1">Password</label>
             <input
-              type="password"
+              name="password"
               className="form-control"
               id="inputPassword1"
               placeholder="Password"
             />
-            <div className="invalid-feedb">
-              1 number, 1 uppercased letter, 1 lowercased letter, 1 special
-              character
-            </div>
+            <div className="invalid-feedb">{getError('password')}</div>
             <label htmlFor="inputPassword2">Password repeat</label>
             <input
-              type="password"
+              name="confirmation"
               className="form-control"
               id="inputPassword2"
               placeholder="Password"
             />
-            <div className="invalid-feedb">Should match!</div>
+            <div className="invalid-feedb">{getError('confirmation')}</div>
           </div>
           <div className="col-md-3 mb-3">
             <label htmlFor="validationGender">Gender</label>
-            <select id="validationGender" className="form-control">
-              <option selected>Male</option>
+            <select
+              name="gender"
+              id="validationGender"
+              className="form-control"
+            >
+              <option>Male</option>
               <option>Female</option>
             </select>
             <div className="invalid-feedb"></div>
@@ -87,36 +142,37 @@ function UnCForm() {
 
           <div className="col-md-3 mb-3">
             <label htmlFor="inputCountrie">Countrie</label>
-            <SelectCountrie aria-labelledby="inputCountrie" />
-            <div className="invalid-feedb">Please provide a valid state.</div>
+
+            <Select name="state1" options={listcountries} />
+
+            <div className="invalid-feedb">{getError('state1')}</div>
           </div>
         </div>
         <div className="form-group">
           <label htmlFor="exampleFormControlFile1">Example file input</label>
           <input
+            name="picture1"
             type="file"
             className="form-control-file"
             id="exampleFormControlFile1"
           />
-          <div className="invalid-feedb">Please provide a valid File.</div>
+          <div className="invalid-feedb">{getError('picture1')}</div>
         </div>
         <div className="form-group">
           <div className="form-check">
             <input
+              name="terms1"
               className="form-check-input"
               type="checkbox"
-              value=""
               id="invalidCheck"
-              required
             />
             <label className="form-check-label" htmlFor="invalidCheck">
               Agree to terms and conditions
             </label>
-            <div className="invalid-feedb">
-              You must agree before submitting.
-            </div>
+            <div className="invalid-feedb">{getError('terms1')}</div>
           </div>
         </div>
+
         <button className="btn btn-primary" type="submit">
           Submit htmlForm
         </button>
@@ -125,4 +181,4 @@ function UnCForm() {
   );
 }
 
-export default UnCForm;
+export default Form;

@@ -16,8 +16,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action: PayloadAction<StateUser>) => {
-      console.log(action.payload.picture);
-
       state.users.push(action.payload);
     },
   },

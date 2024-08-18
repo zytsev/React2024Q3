@@ -21,7 +21,7 @@ function Form() {
     reset,
     control,
     formState: { errors, isValid },
-  } = useForm<user>({ resolver: yupResolver(schema), mode: 'onBlur' });
+  } = useForm<user>({ resolver: yupResolver(schema), mode: 'onChange' });
 
   const onSubmit = async (data: user) => {
     const base64 = await convertBase64(data.picture[0]);

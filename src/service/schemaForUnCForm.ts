@@ -29,26 +29,25 @@ export const schema = yup
       .oneOf([yup.ref('password')], 'Passwords must confirmation')
       .required('Password is required '),
     gender: yup.string().required(),
-    state: yup.object({
-      value: yup.string().required('Please select a country'),
-    }),
-    picture: yup
-      .mixed<FileList>()
-      .required()
-      .test('required', 'Please select a file ', (value: FileList) => {
-        return value?.length > 0;
+    state1: yup.string().required('Please select a country'),
+    terms1: yup
+      .string()
+      .required('You must agree before submitting.')
+      .oneOf(['on'], 'You must agree before submitting.'),
+
+    picture1: yup
+      .mixed<File>()
+      .required('Please select a file')
+      .test('required', 'Please select a file ', (value) => {
+        if (value.size !== 0) {
+          return true;
+        }
       })
       .test('fileSize', 'The file is too large ', (value) => {
-        return value && value[0] && value[0].size < 100000;
+        return value.size < 100000;
       })
-      .test('type', 'We only support jpeg/png', function (value) {
-        return (
-          value &&
-          value[0] &&
-          (value[0].type === 'image/jpeg' || value[0].type === 'image/png')
-        );
+      .test('type', 'We only support jpeg/png', (value) => {
+        return value.type === 'image/jpeg' || value.type === 'image/png';
       }),
-
-    terms: yup.boolean().oneOf([true], 'You must agree before submitting.'),
   })
   .required();
